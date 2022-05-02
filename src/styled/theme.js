@@ -11,4 +11,9 @@ export const theme = {
         roboto: "Roboto, sans-serif",
         sans: "Public Sans, sans-serif",
     },
+    media: {
+        tablet: '(max-width: 900px) and (min-width: 320px)',
+        smallLaptop: '(max-width: 1200px) and (min-width: 901px) '
+
+    }
 };

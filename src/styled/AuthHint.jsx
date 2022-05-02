@@ -1,26 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import { infoSvg } from "../assets/svg";
-import { theme, SelectedText, Text, Flex } from "../styled";
+import { Flex } from "../styled";
 
 const StyledAuthHint = styled.div`
   width: 480px;
-  background: ${theme.colors.lightBlue};
+  background: ${(props) => props.theme.colors.lightBlue};
   padding: 15px 36px 15px 18px;
   border-radius: 8px;
   margin-bottom: 24px;
+  & p {
+    line-height: 22px;
+    font-weight: 400;
+    font-size: 14px;
+    flex: 1;
+    & span {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  @media ${(props) => props.theme.media.tablet} {
+    width: 100%;
+  }
 `;
 
 export const AuthHint = () => {
   return (
     <StyledAuthHint>
-      <Flex>
+      <Flex ai="center">
         {infoSvg}
-        <Text lineHeight="22px">
-          Используй <SelectedText fontWeight="600">email</SelectedText>:
-          demo@minimals.ru /
-          <SelectedText fontWeight="600"> пароль</SelectedText> : demo1234
-        </Text>
+        <p>
+          Используй <span>email</span>: demo@minimals.ru /<span> пароль</span> :
+          demo1234
+        </p>
       </Flex>
     </StyledAuthHint>
   );

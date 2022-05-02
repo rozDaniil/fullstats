@@ -9,8 +9,7 @@ import { AuthLeftSide } from "./AuthLeftSide";
 import { FormContainer } from "./FormContainer";
 import { AuthHint } from "./AuthHint";
 import { Button } from "../component/Button";
-import { CustomCheckbox } from "./CustomCheckbox";
 import { TextAlignContainer } from "./TextAlignContainer";
-import { RotatedBox } from './RotatedBox';
+import { LogoImg } from './LogoImg';
 
-export { theme, SelectedText, RotatedBox, Text, AuthHint, AuthLeftSide, AuthRightSide, Wrapper, Flex, Logo, FormContainer, Button, CustomCheckbox, TextAlignContainer }
+export { theme, LogoImg, SelectedText, Text, AuthHint, AuthLeftSide, AuthRightSide, Wrapper, Flex, Logo, FormContainer, Button, TextAlignContainer }

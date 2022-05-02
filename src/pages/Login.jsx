@@ -1,11 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { LoginForm } from "../component/LoginForm";
 import login from "../assets/login.png";
 import {
-  theme,
-  SelectedText,
-  Text,
   Wrapper,
   Flex,
   Logo,
@@ -13,7 +9,9 @@ import {
   AuthLeftSide,
   FormContainer,
   AuthHint,
+  LogoImg,
 } from "../styled";
+import { GetStarted, MobileGetStarted } from "../component/GetStarted";
 
 export const Login = () => {
   return (
@@ -22,29 +20,21 @@ export const Login = () => {
         <AuthLeftSide bgUrl={login}>
           <Logo />
         </AuthLeftSide>
+        <LogoImg />
         <AuthRightSide>
-          <Text float="right" lineHeight="22px">
-            Нет учетной записи?&nbsp;
-            <Link to="/register">
-              <SelectedText color={theme.colors.blue} fontWeight="600">
-                Зарегистрироваться
-              </SelectedText>
-            </Link>
-          </Text>
-          <FormContainer>
-            <Text
-              lineHeight="36px"
-              fontSize="24px"
-              fontWeight="700"
-              margin="0 0 8px 0"
-            >
-              Войти
-            </Text>
-            <Text lineHeight="24px" fontSize="16px" margin="0 0 40px 0">
-              Введите свои данные ниже
-            </Text>
+          <GetStarted
+            mainText="Нет учетной записи?"
+            linkText="Зарегистрироваться"
+            to="/register"
+          />
+          <FormContainer title="Войти" text="Введите свои данные ниже">
             <AuthHint />
             <LoginForm buttonText="Войти" login />
+            <MobileGetStarted
+              mainText="Нет учетной записи?"
+              linkText="Зарегистрироваться"
+              to="/register"
+            />
           </FormContainer>
         </AuthRightSide>
       </Flex>

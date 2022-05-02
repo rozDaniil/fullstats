@@ -1,117 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import homeBg from "../assets/home.png";
+import styled from "styled-components";
+
 import { gradient } from "../assets/mainPageBg";
-import { triangle } from "../assets/svg";
+import homeBg from "../assets/home.png";
 import { LogOutBox } from "../component/LogOutBox";
-import {
-  Text,
-  Logo,
-  theme,
-  Wrapper,
-  Flex,
-  SelectedText,
-  Button,
-  RotatedBox,
-} from "../styled";
+import { Logo, theme, Flex, Button } from "../styled";
+import { HomeText } from "../styled/HomeText";
+
+const StyledHome = styled.div`
+  font-family: ${(props) => props.theme.fonts.roboto};
+  height: 100vh;
+  padding: 33px 148px 0 144px;
+  background-image: url(${homeBg}), ${gradient};
+  background-repeat: no-repeat;
+  background-position: 93%, 0, 0;
+  background-size: 500px, cover;
+  & a {
+    p {
+      cursor: pointer;
+      margin: 0 8px 0 0;
+      lineheight: 24px;
+      fontsize: 16px;
+      fontweight: 700;
+      color: ${theme.colors.white};
+    }
+  }
+
+  @media ${(props) => props.theme.media.tablet} {
+    padding: 32px 16px 0 16px;
+    background-position: 50% 28%;
+    background-size: 230px, cover;
+  }
+`;
 
 export const Home = () => {
-  const isAuth = true;
-  const [box, setBox] = useState(false);
-
-  const logOutBoxToggler = () => {
-    setBox(!box);
-  };
+  const isAuth = false;
 
   return (
-    <Wrapper bgUrl={homeBg} pd="33px 148px 0 150px" bg={gradient}>
+    <StyledHome>
       <Flex jc="space-between">
-        <Logo color={theme.colors.white} mg="0" />
+        <Logo home />
         {isAuth ? (
-          <Flex ai="center">
-            <Text
-              margin="0 8px 0 0"
-              lineHeight="24px"
-              fontSize="16px"
-              fontWeight="700"
-              color={theme.colors.white}
-            >
-              Антон Аверин
-            </Text>
-            {
-              <RotatedBox rotate={box ? "rotate(180deg)" : null}>
-                <svg
-                  onClick={logOutBoxToggler}
-                  width="10"
-                  height="6"
-                  viewBox="0 0 10 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 1L5 5L9 1"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </RotatedBox>
-            }
-            {box && (
-              <LogOutBox>
-                <Text fontWeight="500">Выход</Text>
-                {triangle}
-              </LogOutBox>
-            )}
-          </Flex>
+          <LogOutBox />
         ) : (
           <Link to="/login">
-            <Text
-              cursor="pointer"
-              margin="0 8px 0 0"
-              lineHeight="24px"
-              fontSize="16px"
-              fontWeight="700"
-              color={theme.colors.white}
-            >
-              Войти
-            </Text>
+            <p>Войти</p>
           </Link>
         )}
       </Flex>
-      <Text
-        margin="229px 0 40px 0 "
-        fontSize="64px"
-        lineHeight="80px"
-        fontWeight="700"
-        color={theme.colors.white}
-      >
-        Start a <br /> new project
-        <br /> with
-        <SelectedText
-          mg="0 0 0 33px"
-          fontSize="64px"
-          lineHeight="80px"
-          color={theme.colors.blue}
-        >
-          FullStats
-        </SelectedText>
-      </Text>
-      <Text
-        width="39%"
-        margin="0 0 16px 0"
-        fontFamily={theme.fonts.sans}
-        fontWeight="400"
-        fontSize="16px"
-        lineHeight="24px"
-        color={theme.colors.white}
-      >
-        Платформа для аналитики поможет вам в выборе товара или ниши, анализи
-        конкурентов, увеличении продаж и в ускорении оборачиваемости вашего
-        товара
-      </Text>
-      <Button width="177px">Перейти к сервису</Button>
-    </Wrapper>
+      <HomeText />
+      <Flex jc="stretch" jcMedia="center">
+        <Button width="177px">Перейти к сервису</Button>
+      </Flex>
+    </StyledHome>
   );
 };

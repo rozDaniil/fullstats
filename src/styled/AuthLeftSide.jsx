@@ -6,6 +6,9 @@ const LeftSide = styled.div`
   border-radius: 16px;
   background: url(${({ bgUrl }) => bgUrl}) no-repeat center center;
   width: 364px;
+  @media ${(props) => props.theme.media.tablet} {
+    display: none;
+  }
 `;
 
 export const AuthLeftSide = (props) => {

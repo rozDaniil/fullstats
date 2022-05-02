@@ -7,7 +7,11 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: ${({ fd }) => fd || "row"};
   justify-content: ${({ jc }) => jc || "stretch"};
-  align-items: ${({ ai }) => ai || "stretch"}; ;
+  align-items: ${({ ai }) => ai || "stretch"};
+  @media ${(props) => props.theme.media.tablet} {
+    justify-content: ${({ jcMedia }) => jcMedia};
+    flex-wrap: wrap;
+  }
 `;
 
 export const Flex = (props) => {

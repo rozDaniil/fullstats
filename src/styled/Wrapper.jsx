@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../styled";
 
 const PageWraper = styled.div`
   padding: ${({ pd }) => pd || "0"};
-  font-family: ${theme.fonts.roboto};
-  background: ${({ bg }) => bg || theme.colors.white};
+  font-family: ${(props) => props.theme.fonts.roboto};
+  background: ${(props) => props.bg || props.theme.colors.white};
   height: 100vh;
   &::before {
     content: url(${({ bgUrl }) => bgUrl});
@@ -15,6 +14,9 @@ const PageWraper = styled.div`
     position: absolute;
     top: 228px;
     right: 81px;
+  }
+  @media ${(props) => props.theme.media.tablet} {
+    padding: 106px 20px;
   }
 `;
 

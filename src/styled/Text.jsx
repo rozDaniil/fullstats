@@ -13,6 +13,11 @@ const Texts = styled.p`
   float: ${({ float }) => float || "none"};
   color: ${({ color }) => color};
   cursor: ${({ cursor }) => cursor || null};
+
+  @media ${(props) => props.theme.media.tablet} {
+    margin: ${({ mgMedia }) => mgMedia};
+    font-size: ${({ fontSizeMedia }) => fontSizeMedia};
+  }
 `;
 
 export const Text = (props) => {
