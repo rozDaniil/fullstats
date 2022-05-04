@@ -1,5 +1,3 @@
-import React from "react";
-import { LoginForm } from "../component/LoginForm";
 import login from "../assets/login.png";
 import {
   Wrapper,
@@ -12,6 +10,7 @@ import {
   LogoImg,
 } from "../styled";
 import { GetStarted, MobileGetStarted } from "../component/GetStarted";
+import { LoginForm } from "../component/LoginForm";
 
 export const Login = () => {
   return (

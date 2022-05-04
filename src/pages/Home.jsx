@@ -1,6 +1,8 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { logout, authUser } from "../store/authSlice";
 
 import { gradient } from "../assets/mainPageBg";
 import homeBg from "../assets/home.png";
@@ -34,15 +36,23 @@ const StyledHome = styled.div`
   }
 `;
 
-export const Home = () => {
-  const isAuth = false;
+export const Home = ({ isLogged }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(authUser());
+    }
+  }, []);
+
+  const logoutHandler = () => dispatch(logout());
 
   return (
     <StyledHome>
       <Flex jc="space-between">
         <Logo home />
-        {isAuth ? (
-          <LogOutBox />
+        {isLogged ? (
+          <LogOutBox onLogout={logoutHandler} />
         ) : (
           <Link to="/login">
             <p>Войти</p>

@@ -41,7 +41,7 @@ export const CustomCheckbox = (props) => {
     <Flex>
       <InputCheckbox {...props} type="checkbox" id="checkbox" />
       <label htmlFor="checkbox" />
-      <p lineHeight="22px">{props.label}</p>
+      <p>{props.label}</p>
     </Flex>
   );
 };

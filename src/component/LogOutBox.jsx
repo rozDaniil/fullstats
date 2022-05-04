@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import classNames from "classnames";
+
 import { triangle } from "../assets/svg";
-import { theme } from "../styled";
 
 const StyledLogOutBox = styled.div`
   position: relative;
@@ -12,7 +14,11 @@ const StyledLogOutBox = styled.div`
     line-height: 24px;
     font-size: 16px;
     font-weight: 700;
-    color: ${theme.colors.white};
+    color: ${(props) => props.theme.colors.white};
+  }
+
+  & svg {
+    cursor: pointer;
   }
 
   & .arrowUp {
@@ -26,14 +32,16 @@ const LogOut = styled.div`
   top: 44px;
   right: -10px;
   padding: 16px 32px;
-  background: ${theme.colors.white};
+  background: ${(props) => props.theme.colors.white};
   box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
 
-  & p {
+  & a {
     color: ${(props) => props.theme.colors.black};
     font-weight: 500;
     font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   & svg {
@@ -43,7 +51,7 @@ const LogOut = styled.div`
   }
 `;
 
-export const LogOutBox = () => {
+export const LogOutBox = ({ onLogout }) => {
   const [box, setBox] = useState(false);
 
   const logOutBoxToggler = () => {
@@ -54,7 +62,7 @@ export const LogOutBox = () => {
     <StyledLogOutBox>
       <p>Антон Аверин</p>
       <svg
-        className={box ? "arrowUp" : null}
+        className={classNames({ arrowUp: box })}
         onClick={logOutBoxToggler}
         width="10"
         height="6"
@@ -72,7 +80,9 @@ export const LogOutBox = () => {
       </svg>
       {box && (
         <LogOut>
-          <p>Выход</p>
+          <Link onClick={onLogout} to="/login">
+            Выход
+          </Link>
           {triangle}
         </LogOut>
       )}

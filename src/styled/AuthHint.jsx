@@ -15,12 +15,8 @@ const StyledAuthHint = styled.div`
     font-size: 14px;
     flex: 1;
     & span {
-      cursor: pointer;
       font-weight: 600;
       font-size: 14px;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
   @media ${(props) => props.theme.media.tablet} {
@@ -34,8 +30,7 @@ export const AuthHint = () => {
       <Flex ai="center">
         {infoSvg}
         <p>
-          Используй <span>email</span>: demo@minimals.ru /<span> пароль</span> :
-          demo1234
+          Используй <span>email</span>: test /<span> пароль</span> : test
         </p>
       </Flex>
     </StyledAuthHint>

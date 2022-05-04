@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { theme } from "../styled";
 
 const StyledHomeText = styled.div`
   margin: 229px 0 13px 0;
@@ -14,7 +13,7 @@ const StyledHomeText = styled.div`
     margin: 0 0 40px 0;
 
     & span {
-      font-family: ${theme.fonts.roboto};
+      font-family: ${(props) => props.theme.fonts.roboto};
       color: ${(props) => props.theme.colors.blue};
       margin: 0 0 0 33px;
       font-size: 64px;
@@ -25,11 +24,11 @@ const StyledHomeText = styled.div`
 
   & span {
     margin: 0 0 16px 0;
-    font-family: ${theme.fonts.sans};
+    font-family: ${(props) => props.theme.fonts.sans};
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: ${theme.colors.white};
+    color: ${(props) => props.theme.colors.white};
   }
 
   @media ${(props) => props.theme.media.tablet} {
